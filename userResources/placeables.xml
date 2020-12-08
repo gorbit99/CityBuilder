@@ -1,0 +1,25 @@
+<placeables>
+    <building value="Test Building">
+        <description value="A test building"/>
+        <cost value="1000"/>
+        <accommodation value="3"/>
+        <water value="-20"/>
+        <waste value="15"/>
+        <electricity value="-10"/>
+        <sprite value="./sprites/testBuilding.png"/>
+    </building>
+    <road value="Test Road">
+        <description value="A test road"/>
+        <cost value="50"/>
+        <sprite value="./sprites/testRoad.png"/>
+    </road>
+    <building value="Test Building 2">
+        <description value="A second test building"/>
+        <cost value="1000"/>
+        <water value="40"/>
+        <waste value="-50"/>
+        <electricity value="20"/>
+        <decor value="1000"/>
+        <sprite value="./sprites/testBuilding.png"/>
+    </building>
+</placeables>

@@ -1,0 +1,46 @@
+* {
+    -fx-border-width: 0;
+}
+
+.menu .label {
+    -fx-text-fill: white;
+}
+
+.menu-item {
+    -fx-background-color: #222222;
+}
+
+.context-menu {
+    -fx-background-color: #222222;
+}
+
+.titled-pane {
+    -fx-background-color: #444444;
+}
+
+.titled-pane > .title {
+    -fx-background-color: #333333;
+}
+
+.titled-pane > .title > .text {
+    -fx-fill: white;
+}
+
+.titled-pane > *.content {
+    -fx-background-color: #444444;
+    -fx-border-width: 0;
+}
+
+#sideBar .button {
+    -fx-padding: 0;
+    -fx-pref-width: 24;
+    -fx-max-width: -fx-pref-width;
+    -fx-min-width: -fx-pref-width;
+    -fx-alignment: top-center;
+}
+
+#menuButton {
+    -fx-min-width: 40;
+    -fx-max-width: -fx-min-width;
+    -fx-pref-width: -fx-min-width;
+}

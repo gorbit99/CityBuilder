@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.petercsala.NagyHazi.Game">
+    <VBox layoutX="6.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <MenuBar style="-fx-background-color: #333333dd;">
+            <Menu mnemonicParsing="false" text="File">
+                <MenuItem mnemonicParsing="false" onAction="#reset" text="New" />
+                <MenuItem mnemonicParsing="false" onAction="#saveButton" text="Save" />
+                <MenuItem mnemonicParsing="false" onAction="#loadButton" text="Load" />
+                <MenuItem mnemonicParsing="false" onAction="#quit" text="Quit" />
+            </Menu>
+            <Menu mnemonicParsing="false" style="-fx-text-fill: white;" text="About">
+                <MenuItem mnemonicParsing="false" onAction="#about" text="Info" />
+            </Menu>
+        </MenuBar>
+        <BorderPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <top>
+                <HBox prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+               <children>
+                  <GridPane prefHeight="25.0" prefWidth="624.0" HBox.hgrow="ALWAYS">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="0.0" prefWidth="44.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="526.0" minWidth="0.0" prefWidth="252.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="557.0" minWidth="10.0" prefWidth="305.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="dateLabel" alignment="CENTER" prefHeight="65.0" prefWidth="327.0" style="-fx-text-fill: white;" text="Date" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
+                           <children>
+                              <ImageView fitHeight="36.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/population.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="populationLabel" prefHeight="30.0" prefWidth="78.0" style="-fx-text-fill: white;" text="Population" />
+                              <ImageView fx:id="happinessImage" fitHeight="34.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/neutral.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="moneyLabel" prefHeight="34.0" prefWidth="143.0" style="-fx-text-fill: white;" text="Money" textAlignment="RIGHT" textOverrun="CLIP">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+               </children></HBox>
+            </top>
+            <left>
+                <VBox id="sideBar" alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="336.0" prefWidth="30.0" spacing="10.0" style="-fx-background-color: #333333;" BorderPane.alignment="CENTER_LEFT">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#buildPressed" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/build.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="13.0" layoutY="15.0" mnemonicParsing="false" onAction="#panPressed" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/pan.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </VBox>
+            </left>
+         <center>
+            <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                      <AnchorPane fx:id="canvasHolder" prefHeight="200.0" prefWidth="200.0">
+                          <Canvas fx:id="canvas" height="337.0" layoutX="221.0" layoutY="49.0" width="558.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                      </AnchorPane>
+                  <AnchorPane maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane fx:id="buildPanel" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="130.0" style="-fx-background-color: #444444;" translateX="-130.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Accordion AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <panes>
+                                  <TitledPane animated="false" expanded="false" text="Buildings">
+                                       <content>
+                                          <TilePane fx:id="buildingContainer" hgap="4.0" prefColumns="2" prefHeight="200.0" prefRows="100" prefWidth="200.0" vgap="4.0">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </TilePane>
+                                       </content>
+                                    </TitledPane>
+                                  <TitledPane animated="false" text="Roads">
+                                       <content>
+                                          <TilePane fx:id="roadContainer" hgap="4.0" prefColumns="2" prefHeight="200.0" prefRows="10" prefWidth="200.0" vgap="4.0" />
+                                       </content>
+                                    </TitledPane>
+                                </panes>
+                              </Accordion>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </StackPane>
+         </center>
+        </BorderPane>
+    </VBox>
+</AnchorPane>
